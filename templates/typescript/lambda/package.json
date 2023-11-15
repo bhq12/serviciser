@@ -7,7 +7,7 @@
   "scripts": {
     "build": "tsc",
     "watch": "tsc -w",
-    "test": "jest",
+    "test": "tsc && jest",
     "cdk": "cdk",
     "lint-check": "npx @biomejs/biome lint .",
     "lint-apply": "npx @biomejs/biome format . --write"

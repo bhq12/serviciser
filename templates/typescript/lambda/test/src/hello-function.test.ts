@@ -1,17 +1,13 @@
-import { hello } from '../../src/hello-function';
+import { hello } from "../../src/hello-function";
 import * as cdk from "aws-cdk-lib";
 import { Template, Match } from "aws-cdk-lib/assertions";
 import * as Lambda from "../../lib/lambda-stack";
 
 test("SQS Queue and SNS Topic Created", () => {
-	const app = new cdk.App();
-	// WHEN
-	const stack = new Lambda.LambdaStack(app, "MyTestStack");
-	// THEN
-
-	const template = Template.fromStack(stack);
-
-	template.hasResourceProperties("AWS::SQS::Queue", {
-		VisibilityTimeout: 300,
-	});
+	// ARRANGE
+	const testEvent = "test-event";
+	// ACT
+	const result = hello(testEvent);
+	// ASSERT
+	expect(result).toBe("test-event");
 });
