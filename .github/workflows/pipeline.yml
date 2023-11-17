@@ -11,6 +11,6 @@ jobs:
       - name: List files in the repository
         run: |
           cd pipeline
-          ./package_cli.sh
+          bash ./package_cli.sh
       - run: echo "🍏 Completed CLI Build."
 
