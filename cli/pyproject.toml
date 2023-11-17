@@ -1,0 +1,11 @@
+[tool.poetry]
+name = "cli"
+version = "1.0.0"
+description = "CLI tool for initialising new services"
+authors = ["bhq12"]
+license = "MIT"
+readme = "README.md"
+
+[tool.poetry.dependencies]
+python = "^3.10"
+inquirer = "^3.1.3"
