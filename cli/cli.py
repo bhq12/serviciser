@@ -53,4 +53,5 @@ def main():
 
 
 if __name__ == "__main__":
+    print('Starting CLI')
     main()
