@@ -3,3 +3,5 @@ app-*
 *.js
 node_modules/**/*
 templates/**/*
+build/*
+dist/*
