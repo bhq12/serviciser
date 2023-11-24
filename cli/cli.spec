@@ -31,7 +31,7 @@ exe = EXE(
     target_arch=None,
     codesign_identity=None,
     entitlements_file=None,
-    onefile=False
+    onefile=True
 )
 coll = COLLECT(
     exe,

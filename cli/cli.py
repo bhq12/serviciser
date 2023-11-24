@@ -3,7 +3,7 @@ from zipfile import ZipFile
 import inquirer
 from distutils.dir_util import copy_tree
 from shutil import rmtree
-TEMPLATES_LOCATION = './templates.zip'
+import sys
 
 def generate_questions():
 
@@ -34,12 +34,19 @@ def generate_questions():
     print(f"Chosen language: {chosen_language}")
     return chosen_service_type, chosen_language
 
+def get_templates_location():
+    try:
+        working_directory = sys._MEIPASS
+    except AttributeError:
+        working_directory = os.getcwd()
+    return os.path.join(working_directory, 'templates.zip')
+
 def main():
     print("Servicising!")
     service_name = input("Please enter your new service name: ")
     
 
-    with ZipFile(TEMPLATES_LOCATION, 'r') as zip:
+    with ZipFile(get_templates_location(), 'r') as zip:
         zip.extractall('.')
 
     chosen_service_type, chosen_language = generate_questions()
