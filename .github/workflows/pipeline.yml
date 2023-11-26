@@ -2,6 +2,7 @@ name: Serviciser build pipeline
 on: [push]
 jobs:
   Build-CLI:
+    permissions: write-all
     runs-on: ubuntu-latest
     steps:
       - name: Check out repository code
@@ -27,7 +28,6 @@ jobs:
           echo ::set-output name=sha::"$(shasum -a 256 ./target/gitui-mac.tar.gz | awk '{printf $1}')"
       - name: Create Release
         id: create_release
-        permissions: write-all
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
