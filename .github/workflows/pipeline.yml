@@ -41,8 +41,11 @@ jobs:
           prerelease: true
       - name: Explore release directory
         run: |
+          echo 'LS 1'
           ls ./cli/dist/cli
+          echo 'LS 2'
           ls ./cli/dist/cli/cli
+          echo 'Done'
       - name: Upload Release Asset
         uses: actions/upload-release-asset@v1
         env:
