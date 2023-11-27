@@ -26,14 +26,17 @@ jobs:
         id: shasum
         run: |
           echo ::set-output name=sha::"$(shasum -a 256 ./target/gitui-mac.tar.gz | awk '{printf $1}')"
+      - name: Set timestamp env variable
+        id: set_timestamp
+        run: echo "NOW=$(date +'%Y%m%dT%H%M%S')" >> $GITHUB_ENV
       - name: Create Release
         id: create_release
         uses: actions/create-release@v1
         env:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
-          tag_name: ${{ github.ref_name }}${{ github.event.repository.updated_at}}
-          release_name: ${{ github.ref_name }}${{ github.event.repository.updated_at}}
+          tag_name: ${{ github.ref_name }}${{ env.NOW }}
+          release_name: ${{ github.ref_name }}${{ env.NOW }}
           draft: false
           prerelease: true
       - name: Upload Release Asset
