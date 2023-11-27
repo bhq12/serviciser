@@ -39,6 +39,9 @@ jobs:
           release_name: ${{ github.ref_name }}${{ env.NOW }}
           draft: false
           prerelease: true
+      - name: Explore build directory
+        run: |
+          ls ./cli/build/cli
       - name: Upload Release Asset
         uses: actions/upload-release-asset@v1
         env:
