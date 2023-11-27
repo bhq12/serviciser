@@ -3,7 +3,7 @@ on: [push]
 jobs:
   Build-CLI:
     permissions: write-all
-    runs-on: ubuntu-latest
+    runs-on: macos-latest
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4
