@@ -42,6 +42,7 @@ jobs:
       - name: Explore release directory
         run: |
           ls ./cli/dist/cli
+          ls ./cli/dist/cli/cli
       - name: Upload Release Asset
         uses: actions/upload-release-asset@v1
         env:
