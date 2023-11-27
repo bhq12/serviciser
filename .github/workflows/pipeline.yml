@@ -42,8 +42,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./target/gitui-mac.tar.gz
-          asset_name: gitui-mac.tar.gz
-          asset_content_type: application/gzip
+          asset_path: ./cli/dist/cli
+          asset_name: cli
+          asset_content_type: application/octet-stream
       - run: echo "🍏 Completed CLI Build."
 
