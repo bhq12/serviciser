@@ -57,6 +57,6 @@ jobs:
           brew bump-formula-pr -f --version=${{ github.ref_name }}${{ env.NOW }} --no-browse --no-audit \
           --sha256=${{ steps.shasum.outputs.sha }} \
           --url="https://github.com/bhq12/serviciser/releases/download/${{ steps.get_version.outputs.version }}/cli.gz" \
-          bhq12/serviciser/serviciser
+          bhq12/serviciser/
       - run: echo "🍏 Completed CLI Build."
 
