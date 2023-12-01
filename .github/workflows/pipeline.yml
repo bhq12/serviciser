@@ -25,7 +25,7 @@ jobs:
       - name: Set SHA
         id: shasum
         run: |
-          echo ::set-output name=sha::"$(shasum -a 256 ./target/gitui-mac.tar.gz | awk '{printf $1}')"
+          echo ::set-output name=sha::"$(shasum -a 256 ./cli/dist/cli/cli.gz | awk '{printf $1}')"
       - name: Set timestamp env variable
         id: set_timestamp
         run: echo "NOW=$(date +'%Y%m%dT%H%M%S')" >> $GITHUB_ENV
@@ -54,9 +54,8 @@ jobs:
           HOMEBREW_GITHUB_API_TOKEN: ${{ secrets.BREW_TOKEN }}
         run: |
           brew tap bhq12/serviciser
-          brew bump-formula-pr -f --version=${{ steps.get_version.outputs.version }} --no-browse --no-audit \
+          brew bump-formula-pr -f --version=${{ github.ref_name }}${{ env.NOW }} --no-browse --no-audit \
           --sha256=${{ steps.shasum.outputs.sha }} \
-          --url="https://github.com/bhq12/serviciser/releases/download/${{ steps.get_version.outputs.version }}/cli.gz" \
-          bhq12/serviciser/serviciser
+          --url="https://github.com/bhq12/serviciser/releases/download/${{ steps.get_version.outputs.version }}/cli.gz"
       - run: echo "🍏 Completed CLI Build."
 
