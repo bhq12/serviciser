@@ -45,8 +45,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./cli.gz
-          asset_name: cli.gz
+          asset_path: ./cli/dist/cli/cli
+          asset_name: cli
           asset_content_type: application/octet-stream
       
       - name: Bump Brew
