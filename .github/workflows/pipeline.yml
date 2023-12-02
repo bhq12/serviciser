@@ -26,6 +26,7 @@ jobs:
         id: shasum
         run: |
           echo ::set-output name=sha::"$(shasum -a 256 ./cli/dist/cli/cli.gz | awk '{printf $1}')"
+          sw_vers
       - name: Set timestamp env variable
         id: set_timestamp
         run: echo "NOW=$(date +'%Y%m%dT%H%M%S')" >> $GITHUB_ENV
