@@ -46,7 +46,7 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./cli/dist/cli/cli.gz
+          asset_path: ./cli/cli.gz
           asset_name: cli.gz
           asset_content_type: application/octet-stream
       
