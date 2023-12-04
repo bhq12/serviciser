@@ -46,8 +46,8 @@ jobs:
           GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
         with:
           upload_url: ${{ steps.create_release.outputs.upload_url }}
-          asset_path: ./cli/cli.gz
-          asset_name: cli.gz
+          asset_path: ./cli.tar.gz
+          asset_name: cli.tar.gz
           asset_content_type: application/octet-stream
       
       - name: Bump Brew
@@ -57,7 +57,7 @@ jobs:
           brew tap bhq12/serviciser
           brew bump-formula-pr -f --version=${{ github.ref_name }}${{ env.NOW }} --no-browse --no-audit \
           --sha256=${{ steps.shasum.outputs.sha }} \
-          --url="https://github.com/bhq12/serviciser/releases/download/${{ steps.get_version.outputs.version }}/cli.gz" \
+          --url="https://github.com/bhq12/serviciser/releases/download/${{ steps.get_version.outputs.version }}/cli.tar.gz" \
           bhq12/serviciser/serviciser
       - run: echo "🍏 Completed CLI Build."
 
