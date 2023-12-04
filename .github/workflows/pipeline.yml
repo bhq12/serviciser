@@ -21,11 +21,11 @@ jobs:
           cd ..
       - name: Get version
         id: get_version
-        run: echo ::set-output name=version::${GITHUB_REF/refs\/tags\//} 
-      - name: Set SHA
+        run: echo "version=${GITHUB_REF/refs\/tags\//}" >> $GITHUB_OUTPUT
+      - name: Set SHA""
         id: shasum
         run: |
-          echo ::set-output name=sha::"$(shasum -a 256 ./cli/dist/cli/cli.gz | awk '{printf $1}')"
+          echo "sha=\"$(shasum -a 256 ./cli/dist/cli/cli.gz | awk '{printf $1}')\"" >> $GITHUB_OUTPUT
           sw_vers
       - name: Set timestamp env variable
         id: set_timestamp
