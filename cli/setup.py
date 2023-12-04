@@ -9,7 +9,7 @@ setup(
     ],
     entry_points={
         'console_scripts': [
-            'your_script_name = cli:main',
+            'serviciser = cli:main',
         ],
     }
 )
