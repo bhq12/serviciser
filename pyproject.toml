@@ -1,3 +1,8 @@
+[project]
+name = 'serviciser'
+requires-python = ">=3.9"
+version = "1.0.0"
+
 [tool.poetry]
 name = "cli"
 version = "1.0.0"
