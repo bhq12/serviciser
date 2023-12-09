@@ -1,3 +1,5 @@
+print('WOWOWOWOWOW')
+
 import os
 from zipfile import ZipFile
 import inquirer
