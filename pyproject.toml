@@ -1,3 +1,6 @@
+[tool.setuptools]
+py-modules = ['cli']
+
 [tool.poetry]
 name = "cli"
 version = "1.0.0"
