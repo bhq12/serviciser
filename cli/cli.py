@@ -1,6 +1,3 @@
-#!/usr/bin/env python3
-print('WOWOWOWOWOW')
-
 import os
 from zipfile import ZipFile
 import inquirer
