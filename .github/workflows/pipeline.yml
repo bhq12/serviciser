@@ -50,14 +50,14 @@ jobs:
           asset_name: cli.tar.gz
           asset_content_type: application/octet-stream
       
-      - name: Bump Brew
-        env: 
-          HOMEBREW_GITHUB_API_TOKEN: ${{ secrets.BREW_TOKEN }}
-        run: |
-          brew tap bhq12/serviciser
-          brew bump-formula-pr -f --version=${{ github.ref_name }}${{ env.NOW }} --no-browse --no-audit \
-          --sha256=${{ steps.shasum.outputs.sha }} \
-          --url="https://github.com/bhq12/serviciser/releases/download/${{ steps.get_version.outputs.version }}/cli.tar.gz" \
-          bhq12/serviciser/serviciser
-      - run: echo "🍏 Completed CLI Build."
+#      - name: Bump Brew
+#        env: 
+#          HOMEBREW_GITHUB_API_TOKEN: ${{ secrets.BREW_TOKEN }}
+#        run: |
+#          brew tap bhq12/serviciser
+#          brew bump-formula-pr -f --version=${{ github.ref_name }}${{ env.NOW }} --no-browse --no-audit \
+#          --sha256=${{ steps.shasum.outputs.sha }} \
+#          --url="https://github.com/bhq12/serviciser/releases/download/${{ steps.get_version.outputs.version }}/cli.tar.gz" \
+#          bhq12/serviciser/serviciser
+#      - run: echo "🍏 Completed CLI Build."
 
