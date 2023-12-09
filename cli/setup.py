@@ -8,8 +8,8 @@ setup(
         'inquirer==3.1.4',
     ],
     entry_points={
-        'console_scripts': [
-            'serviciser = cli:main',
-        ],
+        'console_scripts': {
+            'serviciser': './cli.py'
+        },
     }
 )
