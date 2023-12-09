@@ -36,7 +36,7 @@ def generate_questions():
 
 def get_templates_location():
     try:
-        working_directory = sys._MEIPASS
+        working_directory = os.path.dirname(__file__)
     except AttributeError:
         working_directory = os.getcwd()
     return os.path.join(working_directory, 'templates.zip')
