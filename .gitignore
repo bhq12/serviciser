@@ -45,3 +45,6 @@ package-lock.json
 cdk.context.json
 .cdk.staging
 cdk.out
+
+build/*
+serviciser.egg-info/*
