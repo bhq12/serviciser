@@ -1,13 +1,11 @@
-[project]
-name = 'serviciser'
-requires-python = ">=3.9"
-version = "1.0.0"
+
 
 [tool.poetry]
-name = "cli"
+name = "serviciser"
 version = "1.0.0"
 description = "CLI tool for initialising new services"
 authors = ["bhq12"]
+packages = [{ include = "cli"}]
 license = "MIT"
 readme = "README.md"
 
@@ -16,11 +14,9 @@ python = ">=3.10,<3.13"
 inquirer = "^3.1.3"
 pyinstaller = "^6.2.0"
 
-[tool.setuptools.packages.find]
-where = ["."]  # list of folders that contain the packages (["."] by default)
-include = ["cli"]  # package names should match these glob patterns (["*"] by default)
-exclude = []  # exclude packages matching these glob patterns (empty by default)
-namespaces = false  # to disable scanning PEP 420 namespaces (true by default)
-
 [tool.poetry.scripts]
 serviciser = "cli.cli:main"
+
+[build-system]
+requires = ["poetry-core"]
+build-backend = "poetry.core.masonry.api"
