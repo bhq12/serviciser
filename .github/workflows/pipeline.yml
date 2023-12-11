@@ -5,6 +5,17 @@ jobs:
     permissions: write-all
     runs-on: macos-latest
     steps:
+      - name: Build templates
+        run: |
+          cd templates/aws_lambda/typescript
+          npm install
+          npm run build
+          cd ../../..
+      - name: Run template tests
+        run: |
+          cd templates/aws_lambda/typescript
+          npm run test
+          cd ../../..
       - name: Check out repository code
         uses: actions/checkout@v4
       - name: Set up Python
