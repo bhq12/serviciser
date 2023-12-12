@@ -7,6 +7,17 @@ jobs:
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4
+      - name: Build templates
+        run: |
+          cd templates/aws_lambda/typescript
+          npm install
+          npm run build
+          cd ../../..
+      - name: Run template tests
+        run: |
+          cd templates/aws_lambda/typescript
+          npm run test
+          cd ../../..
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
