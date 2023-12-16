@@ -48,4 +48,5 @@ cdk.out
 
 build/*
 serviciser.egg-info/*
-**/__pycache__/**/*
+
+cli/__pycache__/**/*
