@@ -30,6 +30,11 @@ jobs:
           cd pipeline
           bash ./package_cli.sh
           cd ..
+   Release:
+    permissions: write-all
+    runs-on: macos-latest
+    if: github.ref == 'refs/head/main'
+    steps:
       - name: Get version
         id: get_version
         run: echo "version=${GITHUB_REF/refs\/tags\//}" >> $GITHUB_OUTPUT
