@@ -7,6 +7,17 @@ jobs:
     steps:
       - name: Check out repository code
         uses: actions/checkout@v4
+      - name: Build templates
+        run: |
+          cd templates/aws_lambda/typescript
+          npm install
+          npm run build
+          cd ../../..
+      - name: Run template tests
+        run: |
+          cd templates/aws_lambda/typescript
+          npm run test
+          cd ../../..
       - name: Set up Python
         uses: actions/setup-python@v2
         with:
@@ -19,6 +30,11 @@ jobs:
           cd pipeline
           bash ./package_cli.sh
           cd ..
+  Release:
+    permissions: write-all
+    runs-on: macos-latest
+    if: github.ref == 'refs/head/main'
+    steps:
       - name: Get version
         id: get_version
         run: echo "version=${GITHUB_REF/refs\/tags\//}" >> $GITHUB_OUTPUT
