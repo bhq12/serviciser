@@ -33,6 +33,7 @@ jobs:
   Release:
     permissions: write-all
     runs-on: macos-latest
+    needs: Build-CLI
     if: github.ref_name == 'main'
     steps:
       - name: Get version
