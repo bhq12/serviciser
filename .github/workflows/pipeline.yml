@@ -28,7 +28,7 @@ jobs:
       - name: Run build
         run: |
           cd pipeline
-          bash ./package_cli.sh
+          bash ./main_package_cli.sh
           cd ..
   Release:
     permissions: write-all
