@@ -33,7 +33,7 @@ jobs:
   Release:
     permissions: write-all
     runs-on: macos-latest
-    if: github.ref == 'refs/head/main'
+    if: github.ref_name == 'main'
     steps:
       - name: Get version
         id: get_version
