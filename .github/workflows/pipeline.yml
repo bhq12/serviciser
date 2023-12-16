@@ -30,7 +30,7 @@ jobs:
           cd pipeline
           bash ./package_cli.sh
           cd ..
-   Release:
+  Release:
     permissions: write-all
     runs-on: macos-latest
     if: github.ref == 'refs/head/main'
