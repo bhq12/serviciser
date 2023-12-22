@@ -60,14 +60,20 @@ def get_templates_location():
 def main():
     print("Servicising!")
     service_name = input("Please enter your new service name: ")
+
+    if not os.path.isdir('temporary_templates'):
+        os.mkdir('temporary_templates')
+    else:
+        raise Exception('Temporary templates directory already exists')
+
     
     with ZipFile(get_templates_location(), 'r') as zip:
-        zip.extractall('.')
+        zip.extractall('./temporary_templates')
 
     chosen_service_type, chosen_compute_type, chosen_language = generate_questions()
     os.mkdir(f'./{service_name}')
-    copy_tree(f'./templates/{chosen_service_type}/{chosen_compute_type}/{chosen_language}', f'./{service_name}')
-    rmtree('./templates')
+    copy_tree(f'./temporary_templates/templates/{chosen_service_type}/{chosen_compute_type}/{chosen_language}', f'./{service_name}')
+    rmtree('./temporary_templates')
     print("Servicised!")
 
     
