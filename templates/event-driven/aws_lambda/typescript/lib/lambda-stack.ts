@@ -24,12 +24,12 @@ export class LambdaStack extends Stack {
 
 		lambda.addEventSource(queueEventSource);
 
-		lambda.addToRolePolicy(new PolicyStatement({
-			effect: Effect.ALLOW,
-			actions: ['sqs:ReceiveMessage', 'sqs:DeleteMessage'],
-			resources: [queue.queueArn]
-		}));
-
-
+		lambda.addToRolePolicy(
+			new PolicyStatement({
+				effect: Effect.ALLOW,
+				actions: ["sqs:ReceiveMessage", "sqs:DeleteMessage"],
+				resources: [queue.queueArn],
+			}),
+		);
 	}
 }

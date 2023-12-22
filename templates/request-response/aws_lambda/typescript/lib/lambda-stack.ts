@@ -16,9 +16,8 @@ export class LambdaStack extends Stack {
 
 		const apiGateway = new RestApi(this, "HelloApi", {});
 
-		let apiResourcePath = apiGateway.root.addResource('api');
+		let apiResourcePath = apiGateway.root.addResource("api");
 
-		apiResourcePath.addMethod('GET', new LambdaIntegration(lambda));
-
+		apiResourcePath.addMethod("GET", new LambdaIntegration(lambda));
 	}
 }
