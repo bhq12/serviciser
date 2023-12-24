@@ -1,6 +1,8 @@
 import { Duration, Stack, StackProps } from "aws-cdk-lib";
+import { Effect, PolicyStatement } from "aws-cdk-lib/aws-iam";
 import { Function, Runtime, Code } from "aws-cdk-lib/aws-lambda";
 import { Queue } from "aws-cdk-lib/aws-sqs";
+import { SqsEventSource } from "aws-cdk-lib/aws-lambda-event-sources";
 import { Construct } from "constructs";
 import { join } from "path";
 
@@ -17,5 +19,17 @@ export class LambdaStack extends Stack {
 			code: Code.fromAsset(join(__dirname, "../src/")),
 			handler: "hello-function.hello",
 		});
+
+		const queueEventSource = new SqsEventSource(queue);
+
+		lambda.addEventSource(queueEventSource);
+
+		lambda.addToRolePolicy(
+			new PolicyStatement({
+				effect: Effect.ALLOW,
+				actions: ["sqs:ReceiveMessage", "sqs:DeleteMessage"],
+				resources: [queue.queueArn],
+			}),
+		);
 	}
 }
