@@ -34,6 +34,10 @@ jobs:
       - name: Install Poetry
         run: |
           pip install poetry
+      - name: Run CLI tests
+        run: |
+          poetry install
+          poetry run python -m unittest cli/test/*.py
       - name: Run build
         run: |
           cd pipeline
